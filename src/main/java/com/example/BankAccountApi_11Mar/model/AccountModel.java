@@ -15,26 +15,17 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Table//(name = "Accounts")
 public class AccountModel extends BaseEntity{
-//    @Id
-//    @GeneratedValue(strategy= GenerationType.AUTO)
-//    private long account_id;
-    //@Transient
+
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
-    //@Transient
     private Double accountAmount;
-    //@Transient
     private Date dateOfAccountCreation;
+
+//    One Holder has many account
     @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade=CascadeType.ALL)
     @JoinColumn(nullable = false, name = "holder_id")
+    @Transient
     private HolderModel holderModel;
-
-
-
-
-
 }

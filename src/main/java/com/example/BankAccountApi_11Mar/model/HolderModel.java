@@ -15,10 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table//(name="holders")
 public class HolderModel extends BaseEntity {
-//    @Id
-//    @GeneratedValue(strategy= GenerationType.AUTO)
-//
-//    private long id;
+
+//  @Transient - Specifies that the property or field is not persistent
     @Transient
     AccountModel accountModel;
     private String firstName;
@@ -27,9 +25,12 @@ public class HolderModel extends BaseEntity {
     private String emailAddress;
     private String address;
     private String phoneNumber;
-//one to many relationship, because we have one account holder which can have many accounts
-   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = AccountModel.class)
-    private List<AccountModel> accounts;
 
+  //  One to many relationship, because we have one account holder which can have many accounts
+   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+       orphanRemoval = true, targetEntity = AccountModel.class)
+
+//   We present a list of all accounts the Holder has
+    private List<AccountModel> accounts;
 
 }
