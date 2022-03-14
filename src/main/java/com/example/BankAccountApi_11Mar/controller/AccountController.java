@@ -16,22 +16,22 @@ public class AccountController {
     private HolderService holderService;
 
     //get all the account holders
-    @GetMapping("/accounts")
-    public List<HolderModel> getAllAccount(){
+    @GetMapping("/holders")
+    public List<HolderModel> getAllHolders(){
         //create an empty list for all the
-        return holderService.getAllAccount();
+        return holderService.getAllHolders();
     }
 
     //get account holders with a specific id
-    @GetMapping("/{id}")
-    public HolderModel getAccountById(@PathVariable(value="id") long id){
-        return holderService.getAccountById(id);
+    @GetMapping("/{holder_id}")
+    public HolderModel getHolderById(@PathVariable(value="id") long id){
+        return holderService.getHolderById(id);
     }
 
     //add a new account holder
-    @PostMapping("/add")
-    public HolderModel addAccount(@Validated @RequestBody HolderModel newAccount){
-         return holderService.addAccount(newAccount);
+    @PostMapping("/addholder")
+    public HolderModel addHolders(@Validated @RequestBody HolderModel newHolder){
+         return holderService.addHolder(newHolder);
     }
 
    /* @PutMapping(value="/{id}")
@@ -39,8 +39,8 @@ public class AccountController {
         accountRepository.update(id, updateAccount);
     }*/
 
-   @DeleteMapping("/{id}")
-    public void deleteAccount(@PathVariable(value="id") long id){
-       holderService.deleteAccount(id);
+   @DeleteMapping("/{holder_id}")
+    public void deleteHolder(@PathVariable(value="id") long id){
+       holderService.deleteHolder(id);
     }
 }

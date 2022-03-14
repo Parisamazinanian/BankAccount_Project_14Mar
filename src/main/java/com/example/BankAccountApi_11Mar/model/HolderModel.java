@@ -14,11 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table//(name="holders")
-public class HolderModel {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-
-    private long id;
+public class HolderModel extends BaseEntity {
+//    @Id
+//    @GeneratedValue(strategy= GenerationType.AUTO)
+//
+//    private long id;
+    @Transient
+    AccountModel accountModel;
     private String firstName;
     private String lastName;
     private String password;
@@ -26,8 +28,8 @@ public class HolderModel {
     private String address;
     private String phoneNumber;
 //one to many relationship, because we have one account holder which can have many accounts
-   @OneToMany(cascade = CascadeType.ALL,mappedBy = "holderModel")
-    private List<AccountModel> accountModel;
+   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = AccountModel.class)
+    private List<AccountModel> accounts;
 
 
 }

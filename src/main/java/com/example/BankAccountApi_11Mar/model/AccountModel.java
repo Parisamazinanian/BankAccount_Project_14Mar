@@ -17,10 +17,10 @@ import java.util.Date;
 @AllArgsConstructor
 
 @Table//(name = "Accounts")
-public class AccountModel{
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private long account_id;
+public class AccountModel extends BaseEntity{
+//    @Id
+//    @GeneratedValue(strategy= GenerationType.AUTO)
+//    private long account_id;
     //@Transient
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
@@ -29,7 +29,7 @@ public class AccountModel{
     //@Transient
     private Date dateOfAccountCreation;
     @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade=CascadeType.ALL)
     @JoinColumn(nullable = false, name = "holder_id")
     private HolderModel holderModel;
 

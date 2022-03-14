@@ -13,20 +13,20 @@ public class HolderService {
     @Autowired
     private HolderRepository holderRepository;
 
-    public List<HolderModel> getAllAccount(){
+    public List<HolderModel> getAllHolders(){
         //create an empty list for all the
         return holderRepository.findAll();
     }
 
-    public HolderModel getAccountById(long id){
+    public HolderModel getHolderById(long id){
         return holderRepository.findById(id).orElseThrow();
     }
 
-    public HolderModel addAccount(HolderModel newAccount){
-        return holderRepository.save(newAccount);
+    public HolderModel addHolder(HolderModel newHolder){
+        return holderRepository.save(newHolder);
     }
 
-    public void deleteAccount(long id){
+    public void deleteHolder(long id){
         holderRepository.deleteById(id);
     }
 
