@@ -1,5 +1,6 @@
 package com.example.BankAccountApi_11Mar.service;
 
+import com.example.BankAccountApi_11Mar.model.AccountModel;
 import com.example.BankAccountApi_11Mar.model.HolderModel;
 import com.example.BankAccountApi_11Mar.respositry.HolderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,7 @@ public class HolderService {
     }
 
 
+    public void alterAccount(HolderModel holder) {
+        holderRepository.save(holder);
+    }
 }

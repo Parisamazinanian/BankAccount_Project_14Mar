@@ -23,12 +23,15 @@ public class AccountController {
   }
 
   //get account Accounts with a specific id
-  @GetMapping("/{account_id}")
+  @GetMapping("/{id}")
   public AccountModel getAccountById(@PathVariable(value="id") long id){
     return accountService.getAccountById(id);
   }
 
   //add a new account
+  //problema: a requisicao vai receber apenas o ID do holderModel, porem o spring nao sabe converter esse id na entidade desejada
+  //solucao 1: implementar um converter para que a requisicao receba um long e faca uma busca no bd para retornar o holder
+  //solucao 2: nao utilizar o AccountModel como @RequestBody, e ao inves disso ter um AccountDTO (ou AccountPojo) e esse pojo teria o id do holder, e faria a busca antes de inserir
   @PostMapping("/add")
   public AccountModel addAccounts(@Validated @RequestBody AccountModel newAccount){
     return accountService.addAccount(newAccount);

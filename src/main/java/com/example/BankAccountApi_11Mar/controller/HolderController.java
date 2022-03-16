@@ -23,9 +23,10 @@ public class HolderController {
     }
 
     //get account holders with a specific id
-    @GetMapping("/{holder_id}")
-    public HolderModel getHolderById(@PathVariable(value="id") long id){
-        return holderService.getHolderById(id);
+    @GetMapping("/{id}")
+    public HolderModel getHolderById(@PathVariable(value="id") HolderModel holderModel){
+        //return holderService.getHolderById(id);
+      return holderModel;
     }
 
     //add a new account holder
@@ -39,7 +40,7 @@ public class HolderController {
         accountRepository.update(id, updateAccount);
     }*/
 
-   @DeleteMapping("/{holder_id}")
+   @DeleteMapping("/{id}")
     public void deleteHolder(@PathVariable(value="id") long id){
        holderService.deleteHolder(id);
     }
